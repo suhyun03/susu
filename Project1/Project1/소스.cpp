@@ -1,20 +1,32 @@
 #include <cstdio>
+#include <cstdlib>
+#include <ctime>
 
-int findArrayMax(int score[], int n)
+int sum_of_N(int n)
 {
-	int tmp = score[0];
-	for (int i=1 ; i<n ; i++) {
-		if (score[i] > tmp) {
-			tmp = score[i];
-		}
+	int sum = 0;
+	for (int i = 0; i < n + 1; i++) {
+		sum = sum + i;
 	}
-	return tmp;
+	return sum;
 }
 
-void main()
+int sum_of_N2(int n)
 {
-	int score[5] = { 1, 10, 2, 4, 5 };
-	int out;
-	out = findArrayMax(score, 5);
-	printf("result = %d", out);
+	return (n * (n + 1)) / 2;
+}
+
+int main()
+{
+	clock_t start, finish;
+	double duration;
+
+	start = clock();
+	int sum=sum_of_N(1000000000);
+
+	finish = clock();
+
+	duration = (double)(finish - start) / CLOCKS_PER_SEC;
+	printf("%f°É·È½À´Ï´Ù. \n", duration);
+	return 0;
 }
